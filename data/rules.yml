@@ -1,13 +1,19 @@
 version: "2.0"
 
 rules:
-
-- rule: Say goodbye anytime the user says goodbye
+- rule: Order upon user greeting
   steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - intent: greet 
+  - action: utter_greet
+  - action: utter_order_inquiry
+  - action: order_form
+  - active_loop: order_form
 
-- rule: Say 'I am a bot' anytime the user challenges
+- rule: take order
+  condition:
+  - active_loop: order_form
   steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - action: order_form
+  - active_loop: null
+  - action: utter_thankyou
+

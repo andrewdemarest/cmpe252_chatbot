@@ -46,7 +46,6 @@ nlu:
     - n
     - never
     - I don't think so
-    - don't like that
     - no way
     - not really
 
@@ -83,6 +82,28 @@ nlu:
     - extremly sad
     - so saad
     - so sad
+- lookup: main_entree
+  examples: |
+    - Hamburger
+    - burger
+    - Cheese burger
+    - French fries
+    - a number one
+    - a number two
+    - a number three
+    - a number four
+    - a number five
+    - a number six
+    - a number seven
+    - a number eight
+    - Chicken Nuggets
+- intent: order
+  examples: |
+    - I'd like to order a [burger](main_entree)
+    - I would like [a number one](main_entree)
+    - Can I get [a number two](main_entree)
+    - I want [Chicken Nuggets](main_entree)
+
 
 - intent: bot_challenge
   examples: |
