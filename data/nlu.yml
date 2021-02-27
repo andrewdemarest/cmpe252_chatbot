@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -16,7 +15,8 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
+    - Hello
+    - Hi
 - intent: goodbye
   examples: |
     - good afternoon
@@ -30,7 +30,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -39,7 +38,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -48,7 +46,6 @@ nlu:
     - I don't think so
     - no way
     - not really
-
 - intent: mood_great
   examples: |
     - perfect
@@ -65,7 +62,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -82,6 +78,29 @@ nlu:
     - extremly sad
     - so saad
     - so sad
+- intent: order
+  examples: |
+    - I'd like to order a [burger](main_entree)
+    - I would like [a number one](main_entree)
+    - Can I get [a number two](main_entree)
+    - I want [Chicken Nuggets](main_entree)
+    - I'd like [a](main_entree) [cheeseburger](main_entree)
+    - a [Cheeseburger](main_entree)
+    - I'd like a [burger](main_entree)
+    - I'd like [a number one](main_entree)
+    - I'd like [Chicen Nuggets]{"entity": "main_entree", "value": "Chicken Nuggets"}
+- intent: order_inquiry
+  examples: |
+    - What is my order?
+    - Can you repeat that back to me?
+    - What is my final order?
+    - What do I have so far?
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
 - lookup: main_entree
   examples: |
     - Hamburger
@@ -97,17 +116,3 @@ nlu:
     - a number seven
     - a number eight
     - Chicken Nuggets
-- intent: order
-  examples: |
-    - I'd like to order a [burger](main_entree)
-    - I would like [a number one](main_entree)
-    - Can I get [a number two](main_entree)
-    - I want [Chicken Nuggets](main_entree)
-
-
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?

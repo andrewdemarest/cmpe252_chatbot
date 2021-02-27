@@ -1,58 +1,56 @@
-version: "2.0"
-
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - order
-
-responses:
-  utter_greet:
-  - text: "Hey! How are you?"
-  utter_thankyou:
-  - text: "Thank you!"
-
-  utter_order_inquiry:
-  - text: "How can I help you?"
-
-  utter_price:
-  - text: "That will be XX Price. Fill in later once entity set..."
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "My Pleasure. Have a great day."
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+- order
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- order_inquiry
+entities:
+- drink
+- main_entree
+- side
 slots:
   main_entree:
     type: text
     influence_conversation: true
-
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_thankyou:
+  - text: Thank you!
+  utter_order_inquiry:
+  - text: How can I help you?
+  utter_price:
+  - text: That will be XX Price. Fill in later once entity set...
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: My Pleasure. Have a great day.
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_order:
+  - text: Okay, so I have a {main_entree}.
+  utter_ask_order:
+  - text: What can I get started for you?
+actions:
+- utter_greet
+- utter_order
+- utter_order_inquiry
 forms:
   order_form:
-      main_entree:
-      - type: from_entity
-        entity: main_entree
-        intent: order
-
-entities:
-  - main_entree
-  - drink
-  - side
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+    main_entree:
+    - type: from_entity
+      entity: main_entree
+      intent: order

@@ -8,12 +8,12 @@ rules:
   - action: utter_order_inquiry
   - action: order_form
   - active_loop: order_form
-
+    #test
 - rule: take order
   condition:
   - active_loop: order_form
   steps:
-  - action: order_form
   - active_loop: null
-  - action: utter_thankyou
+  - action: utter_order
+
 
