@@ -18,6 +18,7 @@ McDonalds Drive through Chat Bot
 ### Download RASA dependencies
 1) conda install ujson
 2) conda install tensorflow
+3) pip install typing_extensions
 
 ### Download RASA
 1) pip install rasa
