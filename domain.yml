@@ -3,23 +3,21 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- order
-- greet
-- goodbye
-- affirm
-- deny
-- mood_great
-- mood_unhappy
-- bot_challenge
-- order_inquiry
+  - order:
+      use_entities:
+        - main_entree  #Add entity along with the intent that it'd be a part of. This is also where ignore_entity would be...
+        - drink
+  - greet
 entities:
 - drink
 - main_entree
 - side
+
 slots:
   main_entree:
     type: text
-    influence_conversation: true
+  drink:
+    type: text
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -44,13 +42,24 @@ responses:
   - text: Okay, so I have a {main_entree}.
   utter_ask_order:
   - text: What can I get started for you?
+  utter_ask_main_entree:   
+  - text: What is your main entree of choice? #Corresponds to the actions.py, and 
+  utter_ask_drink:
+  - text: What would you like to drink?
+  utter_wrong_main_entree:
+  - text: I'm sorry we don't have {incorrect_item}.
+
 actions:
 - utter_greet
 - utter_order
 - utter_order_inquiry
+- action_submit #Matches the class in actions.py
+- validate_order_form
 forms:
   order_form:
     main_entree:
     - type: from_entity
       entity: main_entree
-      intent: order
+    drink:
+    - type: from_entity
+      entity: drink

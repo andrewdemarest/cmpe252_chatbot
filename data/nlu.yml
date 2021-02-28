@@ -80,15 +80,16 @@ nlu:
     - so sad
 - intent: order
   examples: |
-    - I'd like to order a [burger](main_entree)
-    - I would like [a number one](main_entree)
-    - Can I get [a number two](main_entree)
-    - I want [Chicken Nuggets](main_entree)
-    - I'd like [a](main_entree) [cheeseburger](main_entree)
-    - a [Cheeseburger](main_entree)
-    - I'd like a [burger](main_entree)
-    - I'd like [a number one](main_entree)
-    - I'd like [Chicen Nuggets]{"entity": "main_entree", "value": "Chicken Nuggets"}
+   - I'd like to order a [burger]{"entity": "main_entree", "value":"burger"}
+   - I would like [a number one]{"entity": "main_entree", "value":"a number one"}
+   - Can I get [a number two]{"entity": "main_entree", "value":"a number two"}
+   - I want [Chicken Nuggets]{"entity": "main_entree", "value":"Chicken Nuggets"}
+   - I'd like  [cheeseburger]{"entity":"main_entree", "value":"cheeseburger"}
+   - a [Cheeseburger]{"entity":"main_entree", "value":"Cheeseburger"}
+   - I'd like a [burger]{"entity":"main_entree", "value":"burger"}
+   - I'd like [a number one]{"entity":"main_entree", "value":"a number one"}
+   - I'd like to order a [burger]{"entity":"main_entree", "value":"burger"} with a [Sprite]{"entity":"drink", "value":"Sprite"} 
+   - I want a main entree of [a number one]{"entity":"main_entree"} and a [Coke]{"entity":"drink", "value":"Coke"}
 - intent: order_inquiry
   examples: |
     - What is my order?

@@ -4,73 +4,16 @@ version: "2.0"
 
 
 
-stories:
-- story: Give order
-  steps:
-  - intent: order_inquiry
-  - action: utter_order #Next line could be to get if this is correct or not
-
-
-
+#stories:
+#- story: Take order 1
+#  steps: 
+#  - intent: greet
+#  - action: utter_ask_order 
+#  - intent: order
+#    entities:
+#    - main_entree: "burger"
+#  - slot_was_set:
+#     - main_entree: "burger" # Allows us to save the entity that was extracted
+#  - action: utter_order
+#
 #Add story for chit chat interruption of rule (see rule.yaml)
-
-- story: interactive_story_1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - action: utter_order_inquiry
-  - action: order_form
-  - active_loop: order_form
-  - slot_was_set:
-    - requested_slot: main_entree
-  - intent: order
-    entities:
-    - main_entree
-  - slot_was_set:
-    - main_entree
-  - action: utter_order
-
-- story: interactive_story_1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - action: utter_order_inquiry
-  - action: order_form
-  - active_loop: order_form
-  - slot_was_set:
-    - requested_slot: main_entree
-  - intent: order
-    entities:
-    - main_entree: burger
-  - slot_was_set:
-    - main_entree: burger
-  - action: utter_order
-  - intent: greet
-  - action: utter_greet
-  - action: utter_order_inquiry
-  - action: order_form
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - intent: order
-    entities:
-    - main_entree: a number one
-  - slot_was_set:
-    - main_entree: a number one
-  - action: utter_order
-  - intent: greet
-  - action: utter_greet
-  - action: utter_order_inquiry
-  - action: order_form
-  - active_loop: order_form
-  - slot_was_set:
-    - main_entree: a number one
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - intent: order
-    entities:
-    - main_entree: Chicken Nuggets
-  - slot_was_set:
-    - main_entree: Chicken Nuggets
-  - action: utter_order
