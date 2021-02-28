@@ -1,14 +1,5 @@
 version: "2.0"
-
 rules:
-- rule: Order upon user greeting
-  steps:
-  - intent: greet 
-  - action: utter_greet
-  - action: utter_order_inquiry
-  - action: order_form
-  - active_loop: order_form
-
 - rule: take order
   condition:
   - active_loop: order_form
@@ -16,4 +7,3 @@ rules:
   - action: order_form
   - active_loop: null
   - action: utter_thankyou
-

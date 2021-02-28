@@ -1,1 +1,63 @@
 version: "2.0"
+stories:
+- story: Story from Conversation ID 5cea152ee75f4e89abe8e507c2a45355
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_order_inquiry
+  - action: order_form
+  - active_loop: order_form
+  - slot_was_set:
+    - requested_slot: main_entree
+  - intent: order
+    entities:
+    - main_entree: mcchicken
+  - slot_was_set:
+    - main_entree: mcchicken
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_side
+  - action: side_form
+  - active_loop: side_form
+  - slot_was_set:
+    - requested_slot: side
+  - intent: side
+    entities:
+    - side: fries
+  - slot_was_set:
+    - side: fries
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_size
+  - action: size_form
+  - active_loop: size_form
+  - slot_was_set:
+    - requested_slot: size
+  - intent: size
+    entities:
+    - size: large
+  - slot_was_set:
+    - size: large
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_drink
+  - action: drink_form
+  - active_loop: drink_form
+  - slot_was_set:
+    - requested_slot: drink
+  - intent: drink
+    entities:
+    - drink: coke
+  - slot_was_set:
+    - drink: coke
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_final_order

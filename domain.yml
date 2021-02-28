@@ -1,58 +1,113 @@
-version: "2.0"
-
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - order
-
-responses:
-  utter_greet:
-  - text: "Hey! How are you?"
-  utter_thankyou:
-  - text: "Thank you!"
-
-  utter_order_inquiry:
-  - text: "How can I help you?"
-
-  utter_price:
-  - text: "That will be XX Price. Fill in later once entity set..."
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "My Pleasure. Have a great day."
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-slots:
-  main_entree:
-    type: text
-    influence_conversation: true
-
-forms:
-  order_form:
-      main_entree:
-      - type: from_entity
-        entity: main_entree
-        intent: order
-
-entities:
-  - main_entree
-  - drink
-  - side
+version: '2.0'
+config:
+  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- order:
+    use_entities: true
+- side:
+    use_entities: true
+- drink:
+    use_entities: true
+entities:
+- main_entree
+- drink
+- side
+- size
+slots:
+  main_entree:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  size:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  side:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  drink:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  requested_slot:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_thankyou:
+  - text: Thank you!
+  utter_order_inquiry:
+  - text: How can I help you?
+  utter_price:
+  - text: That will be XX Price. Fill in later once entity set...
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: My Pleasure. Have a great day.
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_final_order:
+  - text: 'For your order, I have: \n{main_entree}\n{size} {side}\n{drink}'
+  utter_side:
+  - text: Would you like anything to go with your {main_entree}?
+  utter_size:
+  - text: What size {side} would you like?
+  utter_drink:
+  - text: What would you like to wash that down with?
+actions:
+- utter_final_order
+forms:
+  order_form:
+    main_entree:
+    - entity: main_entree
+      intent: order
+      type: from_entity
+  drink_form:
+    drink:
+    - entity: drink
+      intent: drink
+      type: from_entity
+  side_form:
+    side:
+    - entity: size
+      intent: side
+      type: from_entity
+    - entity: side
+      intent: side
+      type: from_entity
+  size_form:
+    size:
+    - entity: size
+      intent: side
+      type: from_entity
+e2e_actions: []
