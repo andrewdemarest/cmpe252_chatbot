@@ -25,6 +25,10 @@ intents:
     use_entities: true
 - drink:
     use_entities: true
+- size:
+    use_entities: true
+- order_inquiry:
+    use_entities: true
 entities:
 - main_entree
 - drink
@@ -84,8 +88,23 @@ responses:
   - text: What size {side} would you like?
   utter_drink:
   - text: What would you like to wash that down with?
+  utter_order:
+  - text: Okay, so I have a {main_entree}.
+  utter_ask_order:
+  - text: What can I get started for you?
+  utter_ask_main_entree:
+  - text: What is your main entree of choice?
+  utter_ask_drink:
+  - text: What would you like to drink?
+  utter_wrong_main_entree:
+  - text: I'm sorry we don't have {incorrect_item}.
 actions:
 - utter_final_order
+- utter_greet
+- utter_order
+- utter_order_inquiry
+- action_submit
+- validate_order_form
 forms:
   order_form:
     main_entree:

@@ -25,3 +25,82 @@
 #         dispatcher.utter_message(text="Hello World!")
 #
 #         return []
+
+
+from typing import Text, List, Any, Dict
+from rasa_sdk import Action, Tracker, FormValidationAction
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.types import DomainDict
+from rasa_sdk.events import SlotSet, EventType
+
+#I'm not sure if this still runs...
+#However, it's intent was to use a custom action to ask for the next slot
+#This is supposed to go run actions utter_ask_main_entree and utter_ask_drink
+#However, I say not sure if it still runs, because I don't know...
+class Test(Action):
+    def name(self) -> Text:
+        return "order_form" #<- needs to match form name in domain.yml
+    
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+        required_slots = ["main_entree", "drink"]
+        print('Running slot thing')
+
+        
+        for slot_name in required_slots:
+            if tracker.slots.get(slot_name) is None:
+                #Slot not filled yet, request the user to fill the slot next
+                return [SlotSet("requested_slot", slot_name)]
+
+        #All slots are filled now...
+        return [SlotSet("requested_slot", None)]
+#This is supposed to be ran once the form is activated
+#It's a validation run...
+class ValidateOrderForm(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_order_form"
+
+
+
+    @staticmethod
+    def main_entree_db() -> List[Text]:
+        return [
+          "hamburger",
+          "a number one",
+          "burger",
+          "cheeseburger",
+          ]
+
+    def validate_main_entree(
+            self,
+            value: Text,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text,Any],
+            ) -> Dict[Text, Any]:
+
+        print('Validating main entree...')
+        print(value)
+        if value.lower() in self.main_entree_db():
+            print('Good news it exists')
+            return {"main_entree":value}
+        else:
+            dispatcher.utter_message(template="utter_wrong_menu_item", incorrect_item = value)
+            print('Bad news it does not exist')
+            return {"main_entree":None}
+        
+
+
+
+class ActionSubmit(Action):
+    def name(self) -> Text:
+        return "action_submit"
+
+    def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: "DomainDict"
+        ) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message(template="utter_order", Main_entree=tracker.get_slot("main_entree"), Drink=tracker.get_slot("drink"))

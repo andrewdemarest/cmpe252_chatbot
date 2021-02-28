@@ -1,9 +1,17 @@
 version: "2.0"
 rules:
-- rule: take order
+- rule: Activate Form
+  steps:
+  - intent: order
+  - action: order_form #Matches domain.yml AND actions.py
+  - active_loop: order_form #indicate the form is active
+
+- rule: Submit form #Deactivate the form
   condition:
-  - active_loop: order_form
+  - active_loop: order_form #enters rule submit form if condition is met that order_form is active
   steps:
   - action: order_form
   - active_loop: null
-  - action: utter_thankyou
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_submit #action to perform when we submit the form (or deactivate it)

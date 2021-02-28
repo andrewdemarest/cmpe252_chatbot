@@ -61,3 +61,17 @@ stories:
   - slot_was_set:
     - requested_slot: null
   - action: utter_final_order
+
+#stories:
+#- story: Take order 1
+#  steps: 
+#  - intent: greet
+#  - action: utter_ask_order 
+#  - intent: order
+#    entities:
+#    - main_entree: "burger"
+#  - slot_was_set:
+#     - main_entree: "burger" # Allows us to save the entity that was extracted
+#  - action: utter_order
+#
+#Add story for chit chat interruption of rule (see rule.yaml)
