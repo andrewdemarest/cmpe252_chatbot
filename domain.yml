@@ -23,6 +23,8 @@ intents:
     use_entities: true
 - side:
     use_entities: true
+- dessert:
+    use_entities: true
 - drink:
     use_entities: true
 - size:
@@ -32,6 +34,7 @@ intents:
 entities:
 - main_entree
 - drink
+- dessert
 - side
 - size
 slots:
@@ -51,6 +54,11 @@ slots:
     auto_fill: true
     influence_conversation: true
   drink:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  dessert:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
@@ -96,6 +104,8 @@ responses:
   - text: What is your main entree of choice?
   utter_ask_drink:
   - text: What would you like to drink?
+  utter_ask_dessert:
+  - text: Could I interest you in a McFlurry or another dessert?
   utter_wrong_main_entree:
   - text: I'm sorry we don't have {incorrect_item}.
 actions:
@@ -115,6 +125,11 @@ forms:
     drink:
     - entity: drink
       intent: drink
+      type: from_entity
+  dessert_form:
+    dessert:
+    - entity: dessert
+      intent: dessert
       type: from_entity
   side_form:
     side:
