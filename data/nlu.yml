@@ -78,6 +78,17 @@ nlu:
     - extremly sad
     - so saad
     - so sad
+- intent: thank_you
+  examples: |
+    - thanks
+    - thank you
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - are you human?
+    - am I talking to a bot?
+    - am I talking to a human?
 - intent: order
   examples: |
     - I'd like to order a [burger](main_entree)
@@ -111,12 +122,6 @@ nlu:
     - Can you repeat that back to me?
     - What is my final order?
     - What do I have so far?
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
 - intent: side
   examples: |
     - an order of [fries](side)

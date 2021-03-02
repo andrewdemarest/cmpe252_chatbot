@@ -31,12 +31,18 @@ intents:
     use_entities: true
 - order_inquiry:
     use_entities: true
+- nlu_fallback:
+    use_entities: false
+- thank you:
+    use_entities: false
+
 entities:
 - main_entree
 - drink
 - dessert
 - side
 - size
+
 slots:
   main_entree:
     type: rasa.shared.core.slots.TextSlot
@@ -85,11 +91,11 @@ responses:
   utter_happy:
   - text: Great, carry on!
   utter_goodbye:
-  - text: My Pleasure. Have a great day.
+  - text: Have a great day.
   utter_iamabot:
-  - text: I am a bot, powered by Rasa.
+  - text: I am McBot.
   utter_final_order:
-  - text: |-
+  - text: |
       For your order, I have: 
       {main_entree}
       {size} {side}
@@ -112,6 +118,9 @@ responses:
   - text: Could I interest you in a McFlurry or another dessert?
   utter_wrong_main_entree:
   - text: I'm sorry we don't have {incorrect_item}.
+  utter_rephrase:
+  - text: I'm sorry, I didn't catch that. Can you rephrase?
+
 actions:
 - utter_final_order
 - utter_greet
@@ -119,6 +128,7 @@ actions:
 - utter_order_inquiry
 - action_submit
 - validate_order_form
+
 forms:
   order_form:
     main_entree:
