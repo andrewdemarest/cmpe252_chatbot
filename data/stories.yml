@@ -61,17 +61,196 @@ stories:
   - slot_was_set:
     - requested_slot: null
   - action: utter_final_order
-
-#stories:
-#- story: Take order 1
-#  steps: 
-#  - intent: greet
-#  - action: utter_ask_order 
-#  - intent: order
-#    entities:
-#    - main_entree: "burger"
-#  - slot_was_set:
-#     - main_entree: "burger" # Allows us to save the entity that was extracted
-#  - action: utter_order
-#
-#Add story for chit chat interruption of rule (see rule.yaml)
+- story: Story from Conversation ID bcb401f9e8134736b975ae8ee15ecb12
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_order_inquiry
+  - action: order_form
+  - intent: order
+    entities:
+    - main_entree: 6 piece chicken mcnuggets
+  - slot_was_set:
+    - main_entree: 6 piece chicken mcnuggets
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_side
+  - action: side_form
+  - active_loop: side_form
+  - slot_was_set:
+    - requested_slot: side
+  - intent: side
+    entities:
+    - side: fries
+  - slot_was_set:
+    - side: fries
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_size
+  - action: size_form
+  - active_loop: size_form
+  - slot_was_set:
+    - requested_slot: size
+  - intent: size
+    entities:
+    - size: small
+  - slot_was_set:
+    - size: small
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_drink
+  - action: drink_form
+  - active_loop: drink_form
+  - slot_was_set:
+    - requested_slot: drink
+  - intent: drink
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_final_order
+- story: Story from Conversation ID 4ccd52b5ea674ae598dedb20ab6d7203
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_order_inquiry
+  - action: order_form
+  - intent: order
+    entities:
+    - main_entree: spicy crispy chicken sandwich
+  - slot_was_set:
+    - main_entree: spicy crispy chicken sandwich
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_side
+  - action: side_form
+  - active_loop: side_form
+  - slot_was_set:
+    - requested_slot: side
+  - intent: deny
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_drink
+  - action: drink_form
+  - active_loop: drink_form
+  - slot_was_set:
+    - requested_slot: drink
+  - intent: drink
+    entities:
+    - drink: orange juice
+  - slot_was_set:
+    - drink: orange juice
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_final_order
+- story: Story from Conversation ID 3064338117354d02a0b4030e14073d88
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_order_inquiry
+  - action: order_form
+  - intent: order
+    entities:
+    - main_entree: one
+    - main_entree: deluxe crispy chicken sandwich
+  - slot_was_set:
+    - main_entree: deluxe crispy chicken sandwich
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_side
+  - action: side_form
+  - active_loop: side_form
+  - slot_was_set:
+    - requested_slot: side
+  - intent: deny
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_drink
+  - action: drink_form
+  - active_loop: drink_form
+  - slot_was_set:
+    - requested_slot: drink
+  - intent: drink
+    entities:
+    - drink: dr pepper
+  - slot_was_set:
+    - drink: dr pepper
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_final_order
+- story: Story from Conversation ID 13938543233f4de1b921486004d08a07
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_order_inquiry
+  - action: order_form
+  - slot_was_set:
+    - main_entree: 4 piece chicken mcnuggets
+  - intent: order
+    entities:
+    - main_entree: 4 piece chicken mcnuggets
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_side
+  - action: side_form
+  - active_loop: side_form
+  - slot_was_set:
+    - requested_slot: side
+  - intent: side
+    entities:
+    - side: fries
+  - slot_was_set:
+    - side: fries
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_size
+  - action: size_form
+  - active_loop: size_form
+  - slot_was_set:
+    - requested_slot: size
+  - intent: size
+    entities:
+    - size: medium
+  - slot_was_set:
+    - size: medium
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_drink
+  - action: drink_form
+  - active_loop: drink_form
+  - slot_was_set:
+    - requested_slot: drink
+  - intent: drink
+    entities:
+    - drink: lemonade
+  - slot_was_set:
+    - drink: lemonade
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_final_order

@@ -81,7 +81,11 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
   utter_final_order:
-  - text: 'For your order, I have: \n{main_entree}\n{size} {side}\n{drink}'
+  - text: |-
+      For your order, I have: 
+      {main_entree}
+      {size} {side}
+      {drink}
   utter_side:
   - text: Would you like anything to go with your {main_entree}?
   utter_size:

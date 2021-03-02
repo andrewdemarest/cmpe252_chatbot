@@ -44,6 +44,8 @@ nlu:
     - I don't think so
     - no way
     - not really
+    - no thanks
+    - No thanks
 - intent: mood_great
   examples: |
     - perfect
@@ -98,6 +100,11 @@ nlu:
     - I want a main entree of [a number one](main_entree) and a [Coke](drink)
     - I'll have a [mcchicken](main_entree)
     - I'll take a [mcchicken](main_entree) please
+    - I would like a [6 piece chicken mcnuggets](main_entree) please
+    - Can I get a [spicy crispy chicken sandwich](main_entree) please
+    - I'll have a [filet-o-fish](main_entree)
+    - [one](main_entree) [deluxe crispy chicken sandwich](main_entree) please
+    - I'll have a [4 piece chicken mcnuggets](main_entree) please
 - intent: order_inquiry
   examples: |
     - What is my order?
@@ -117,14 +124,36 @@ nlu:
     - I'll take an order of [fries](side)
     - I'd like an order of [fries](side)
     - Sure, I'll have an order of [fries](side)
+    - Sure, I'll have some [fries](side)
+    - I'll have a [medium](size) [fries](side) please
+    - [small](size) [fries](side)
+    - [large](size) [fries](side)
+    - [fries](side)
 - intent: size
   examples: |
     - [large](size)
     - [small](size)
     - [medium](size) please
     - [large](size) please
+    - I'll have a [small](size)
+    - [medium](size)
 - intent: drink
   examples: |
     - a [coke](drink)
     - I'll have a sprite
     - [coke](drink)
+    - I'll have a [powerade](drink)
+    - [fanta orange](drink)
+    - [sprite](drink)
+    - [dr pepper](drink)
+    - [diet coke](drink)
+    - [iced tea](drink)
+    - [sweet tea](drink)
+    - [water](drink)
+    - [fruit punch](drink)
+    - [orange juice](drink)
+    - [pink lemonade](drink)
+    - [blue raspberry slushie](drink)
+    - I'll take an [orange juice](drink)
+    - [dr pepper](drink) please
+    - [lemonade](drink)
