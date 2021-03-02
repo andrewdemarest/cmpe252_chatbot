@@ -1,5 +1,5 @@
 version: "2.0"
-rules:
+#rules:
 # - rule: Activate Form
 #   steps:
 #   - intent: order
@@ -15,3 +15,12 @@ rules:
 #   - slot_was_set:
 #     - requested_slot: null
 #   - action: action_submit #action to perform when we submit the form (or deactivate it)
+rules:
+ - rule: respond to FAQs
+   steps:
+   - intent: faq
+   - action: utter_faq
+ - rule: respond to chitchat
+   steps:
+   - intent: chitchat
+   - action: utter_chitchat

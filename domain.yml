@@ -19,7 +19,7 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
-- order:
+- main_entree:
     use_entities: true
 - side:
     use_entities: true
@@ -31,6 +31,11 @@ intents:
     use_entities: true
 - order_inquiry:
     use_entities: true
+- faq:
+    use_entities: true
+- chitchat:
+    use_entities: true
+
 entities:
 - main_entree
 - drink
@@ -70,7 +75,7 @@ slots:
     influence_conversation: false
 responses:
   utter_greet:
-  - text: Hey! How are you?
+  - text: Hey! 
   utter_thankyou:
   - text: Thank you!
   utter_order_inquiry:
@@ -100,10 +105,6 @@ responses:
   - text: What size {side} would you like?
   utter_drink:
   - text: What would you like to wash that down with?
-  utter_order:
-  - text: Okay, so I have a {main_entree}.
-  utter_ask_order:
-  - text: What can I get started for you?
   utter_ask_main_entree:
   - text: What is your main entree of choice?
   utter_ask_drink:
@@ -112,18 +113,38 @@ responses:
   - text: Could I interest you in a McFlurry or another dessert?
   utter_wrong_main_entree:
   - text: I'm sorry we don't have {incorrect_item}.
+  utter_faq/ask_main_entree: 
+  - text: We have things like burgers, chicken mcnuggets, spicy chicken sandwhiches, and things of that nature.
+  utter_faq/ask_drink:
+  - text: We have the usual coke products, lemonade, fruit punch, you name it!
+  utter_faq/ask_side:
+  - text: Mostly fries.
+  utter_faq/ask_dessert:
+  - text: We have Milk shakes, sundaes, kiddie cones, and McFlurryies!
+  utter_chitchat/ask_weather:
+  - text: That weather is sure something.
+  - text: I love days like this.
+  - text: I'm a computer, can't really say I enjoy weather...
+  utter_chitchat/ask_name:
+  - text: My name is Ronald.
+  - text: They call me McDonald. Ronald McDonald.
+  utter_chitchat/ask_status:
+  - text: Surviving.
+  - text: Livin' the dream!
+  - text: A'Okay
+  utter_chitchat/compliment:
+  - text: Aw thanks!
+  - text: You are too kind.
+
 actions:
-- utter_final_order
-- utter_greet
-- utter_order
-- utter_order_inquiry
 - action_submit
-- validate_order_form
+- validate_main_entree_form
+- validate_drink_form
 forms:
-  order_form:
+  main_entree_form:
     main_entree:
     - entity: main_entree
-      intent: order
+      intent: main_entree
       type: from_entity
   drink_form:
     drink:
