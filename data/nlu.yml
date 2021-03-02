@@ -129,6 +129,15 @@ nlu:
     - [small](size) [fries](side)
     - [large](size) [fries](side)
     - [fries](side)
+- intent: dessert
+  examples: |
+    - [McFlurry](dessert) please
+    - Can I have a [vanilla shake](dessert)
+    - May I have a [chocoloate shake](dessert)
+    - I will have a [strawberry shake](dessert)
+    - Can I get a [hot fudge sundae](dessert)
+    - I'll have a [hot caramel sundae](dessert) please
+    - I would like a [kiddie cone](dessert)
 - intent: size
   examples: |
     - [large](size)
