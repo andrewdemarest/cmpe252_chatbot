@@ -17,13 +17,21 @@ rules:
   - intent: thank_you
   - action: utter_thankyou
 
- # TODO: activate rule, I cant seem to activate this, even after rising threshold
+ # TODO: activate rule, I cant seem to activate this, even after raising threshold?
 - rule: Ask user to rephrase if the message has low NLU confidence
-  steps: 
+  steps:
   - intent: nlu_fallback
   - action: utter_rephrase
 
+- rule: respond to FAQs
+  steps:
+  - intent: faq
+  - action: utter_faq
 
+- rule: respond to chitchat
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
 
 # - rule: Activate Form
 #   steps:
@@ -40,3 +48,5 @@ rules:
 #   - slot_was_set:
 #     - requested_slot: null
 #   - action: action_submit #action to perform when we submit the form (or deactivate it)
+
+

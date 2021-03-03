@@ -4,12 +4,11 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_order_inquiry
-  - action: order_form
-  - active_loop: order_form
+  - action: main_entree_form
+  - active_loop: main_entree_form
   - slot_was_set:
     - requested_slot: main_entree
-  - intent: order
+  - intent: main_entree 
     entities:
     - main_entree: mcchicken
   - slot_was_set:
@@ -65,9 +64,8 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_order_inquiry
-  - action: order_form
-  - intent: order
+  - action: main_entree_form
+  - intent: main_entree 
     entities:
     - main_entree: 6 piece chicken mcnuggets
   - slot_was_set:
@@ -119,9 +117,8 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_order_inquiry
-  - action: order_form
-  - intent: order
+  - action: main_entree_form
+  - intent: main_entree 
     entities:
     - main_entree: spicy crispy chicken sandwich
   - slot_was_set:
@@ -159,9 +156,8 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_order_inquiry
-  - action: order_form
-  - intent: order
+  - action: main_entree_form
+  - intent: main_entree 
     entities:
     - main_entree: one
     - main_entree: deluxe crispy chicken sandwich
@@ -200,11 +196,10 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_order_inquiry
-  - action: order_form
+  - action: main_entree_form
   - slot_was_set:
     - main_entree: 4 piece chicken mcnuggets
-  - intent: order
+  - intent: main_entree 
     entities:
     - main_entree: 4 piece chicken mcnuggets
   - action: action_deactivate_loop

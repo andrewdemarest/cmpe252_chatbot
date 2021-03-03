@@ -39,7 +39,7 @@ from rasa_sdk.events import SlotSet, EventType
 #However, I say not sure if it still runs, because I don't know...
 class Test(Action):
     def name(self) -> Text:
-        return "order_form" #<- needs to match form name in domain.yml
+        return "order_form_not_matching_on_purpose" #<- needs to match form name in domain.yml
     
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
@@ -57,9 +57,9 @@ class Test(Action):
         return [SlotSet("requested_slot", None)]
 #This is supposed to be ran once the form is activated
 #It's a validation run...
-class ValidateOrderForm(FormValidationAction):
+class ValidateMainEntreeForm(FormValidationAction):
     def name(self) -> Text:
-        return "validate_order_form"
+        return "validate_main_entree_form"
 
 
 
@@ -70,6 +70,16 @@ class ValidateOrderForm(FormValidationAction):
           "a number one",
           "burger",
           "cheeseburger",
+          "Chicken Nuggets", 
+          "crispy chicken sandwich",
+          "spicy crispy chicken sandwich",
+          "deluxe crispy chicken sandwich",
+          "6 piece chicken mcnuggets", 
+          "4 piece chicken mcnuggets",
+          "McChicken", 
+          "filet-o-fish",
+          "mcchicken",
+          
           ]
 
     def validate_main_entree(
@@ -86,21 +96,81 @@ class ValidateOrderForm(FormValidationAction):
             print('Good news it exists')
             return {"main_entree":value}
         else:
-            dispatcher.utter_message(template="utter_wrong_menu_item", incorrect_item = value)
             print('Bad news it does not exist')
+            dispatcher.utter_message(template="utter_wrong_menu_item", incorrect_item = value)
             return {"main_entree":None}
         
 
-
-
-class ActionSubmit(Action):
+class ValidateDrinkForm(FormValidationAction):
     def name(self) -> Text:
-        return "action_submit"
+        return "validate_drink_form"
 
-    def run(
-        self,
-        dispatcher,
-        tracker: Tracker,
-        domain: "DomainDict"
-        ) -> List[Dict[Text, Any]]:
-        dispatcher.utter_message(template="utter_order", Main_entree=tracker.get_slot("main_entree"), Drink=tracker.get_slot("drink"))
+    @staticmethod
+    def drink_db() -> List[Text]:
+        return [
+         "coke",
+         "orange juice",
+         "lemonade", 
+         "sprite", 
+         "coffee",
+         ]
+
+    def validate_drink(
+            self,
+            value: Text,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
+            ) -> Dict[Text, Any]:
+        print('Validating drink order...')
+        print(value)
+        if value.lower() in self.drink_db():
+            print('Good news it exists')
+            return {"drink":value}
+        else:
+            print('Bad news it does not exist')
+            dispatcher.utter_Message(tempate="utter_wrong_menu_item", incorrect_item = value)
+            return {"drink":None}
+ 
+class ActionSubmit(Action):
+     def name(self) -> Text:
+         return "action_submit"
+
+     def run(
+         self,
+         dispatcher,
+         tracker: Tracker,
+         domain: "DomainDict"
+         ) -> List[Dict[Text, Any]]:
+         dispatcher.utter_message(template="utter_order", Main_entree=tracker.get_slot("main_entree"), Drink=tracker.get_slot("drink"))
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+

@@ -89,7 +89,7 @@ nlu:
     - are you human?
     - am I talking to a bot?
     - am I talking to a human?
-- intent: order
+- intent: main_entree
   examples: |
     - I'd like to order a [burger](main_entree)
     - I would like [a number one](main_entree)
@@ -171,3 +171,53 @@ nlu:
     - I'll take an [orange juice](drink)
     - [dr pepper](drink) please
     - [lemonade](drink)
+- intent: faq/ask_main_entree
+  examples: |
+    - What main_entree's are there?
+    - What is good here?
+    - What do you suggest to order?
+    - What's on the menu?
+- intent: faq/ask_drink
+  examples: |
+    - What do you have to drink?
+    - I'm thirsty. What do you have to drink?
+    - What drinks do you offer?
+    - What beverages do you serve?
+    - What drinks do you serve?
+- intent: faq/ask_side
+  examples: |
+    - What sides do you offer?
+    - What sides are there?
+    - What sides exist?
+    - What types of sides do you have?
+- intent: faq/ask_dessert
+  examples: |
+    - What desserts do you have?
+    - What desserts are there?
+    - Well what desserts do you serve?
+    - What types of sides do you have?
+
+- intent: chitchat/ask_weather
+  examples: |
+    - Sure is a nice day out.
+    - Wow that weather.
+- intent: chitchat/ask_name
+  examples: |
+    - What is your name?
+    - Who is helping me today?
+    - What do you call yourself?
+- intent: chitchat/ask_status
+  examples: |
+    - How are you doing today?
+    - How's it hanging?
+    - What's up?
+    - How is it going?
+- intent: chitchat/compliment
+  examples: |
+    - Your service is wonderful.
+    - I love your restaurant.
+    - We love coming here.
+    - This place is great!
+    - You are wonderful.
+    - You are a handsome devil.
+    - You have a way with words.
