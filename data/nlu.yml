@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -16,7 +15,6 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
 - intent: goodbye
   examples: |
     - good afternoon
@@ -30,7 +28,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -39,17 +36,16 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
     - n
     - never
     - I don't think so
-    - don't like that
     - no way
     - not really
-
+    - no thanks
+    - No thanks
 - intent: mood_great
   examples: |
     - perfect
@@ -66,7 +62,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -83,10 +78,96 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
+- intent: thank_you
+  examples: |
+    - thanks
+    - thank you
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
+    - are you human?
     - am I talking to a bot?
     - am I talking to a human?
+- intent: order
+  examples: |
+    - I'd like to order a [burger](main_entree)
+    - I would like [a number one](main_entree)
+    - Can I get [a number two](main_entree)
+    - I want [Chicken Nuggets](main_entree)
+    - I would like a [crispy chicken sandwich](main_entree)
+    - I would like a [spicy crispy chicken sandwich](main_entree)
+    - Can I get a [deluxe crispy chicken sandwich](main_entree)
+    - [6 piece spicy chicken mcnuggets](main_entree) please
+    - I'd like to order a [4 piece chicken mcnuggets](main_entree) please
+    - May I have a [McChicken](main_entree)?
+    - One [filet-o-fish](main_entree) please
+    - can I have a [mcchicken](main_entree)
+    - I'd like  [cheeseburger](main_entree)
+    - a [Cheeseburger](main_entree)
+    - I'd like a [burger](main_entree)
+    - I'd like [a number one](main_entree)
+    - I'd like to order a [burger](main_entree) with a [Sprite](drink)
+    - I want a main entree of [a number one](main_entree) and a [Coke](drink)
+    - I'll have a [mcchicken](main_entree)
+    - I'll take a [mcchicken](main_entree) please
+    - I would like a [6 piece chicken mcnuggets](main_entree) please
+    - Can I get a [spicy crispy chicken sandwich](main_entree) please
+    - I'll have a [filet-o-fish](main_entree)
+    - [one](main_entree) [deluxe crispy chicken sandwich](main_entree) please
+    - I'll have a [4 piece chicken mcnuggets](main_entree) please
+- intent: order_inquiry
+  examples: |
+    - What is my order?
+    - Can you repeat that back to me?
+    - What is my final order?
+    - What do I have so far?
+- intent: side
+  examples: |
+    - an order of [fries](side)
+    - I'll have an order of [fries](side)
+    - I'll take an order of [fries](side)
+    - I'd like an order of [fries](side)
+    - Sure, I'll have an order of [fries](side)
+    - Sure, I'll have some [fries](side)
+    - I'll have a [medium](size) [fries](side) please
+    - [small](size) [fries](side)
+    - [large](size) [fries](side)
+    - [fries](side)
+- intent: dessert
+  examples: |
+    - [McFlurry](dessert) please
+    - Can I have a [vanilla shake](dessert)
+    - May I have a [chocoloate shake](dessert)
+    - I will have a [strawberry shake](dessert)
+    - Can I get a [hot fudge sundae](dessert)
+    - I'll have a [hot caramel sundae](dessert) please
+    - I would like a [kiddie cone](dessert)
+- intent: size
+  examples: |
+    - [large](size)
+    - [small](size)
+    - [medium](size) please
+    - [large](size) please
+    - I'll have a [small](size)
+    - [medium](size)
+- intent: drink
+  examples: |
+    - a [coke](drink)
+    - I'll have a sprite
+    - [coke](drink)
+    - I'll have a [powerade](drink)
+    - [fanta orange](drink)
+    - [sprite](drink)
+    - [dr pepper](drink)
+    - [diet coke](drink)
+    - [iced tea](drink)
+    - [sweet tea](drink)
+    - [water](drink)
+    - [fruit punch](drink)
+    - [orange juice](drink)
+    - [pink lemonade](drink)
+    - [blue raspberry slushie](drink)
+    - I'll take an [orange juice](drink)
+    - [dr pepper](drink) please
+    - [lemonade](drink)
