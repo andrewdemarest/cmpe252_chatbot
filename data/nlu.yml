@@ -1,4 +1,5 @@
 version: "2.0"
+
 nlu:
 - intent: greet
   examples: |
@@ -196,7 +197,6 @@ nlu:
     - What desserts are there?
     - Well what desserts do you serve?
     - What types of sides do you have?
-
 - intent: chitchat/ask_weather
   examples: |
     - Sure is a nice day out.

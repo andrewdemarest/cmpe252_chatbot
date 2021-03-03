@@ -1,5 +1,49 @@
 version: "2.0"
 stories:
+
+## Potential template/ideas for simple stories we can work off of####################
+# the really long stories are overwhelming and can be modularized as shown below
+- story: introduction # can we name all stories going forward
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - action: utter_order_inquiry
+    - checkpoint: check_asked_order
+
+- story: take main entree order
+  steps:
+    - checkpoint: check_asked_order
+    - intent: main_entree
+    - action: main_entree_form
+    - active_loop: main_entree_form
+    - active_loop: null # TODO: figure out how to get it to null.  I saw that you null'd in your stories? How?
+    - checkpoint: check_order_placed
+
+- story: take drink order
+  steps:
+    - checkpoint: check_asked_order
+    - intent: drink
+    - action: drink_form
+    - active_loop: drink_form
+    - active_loop: null
+    - checkpoint: check_order_placed
+
+- story: take dessert order
+  steps:
+    - checkpoint: check_asked_order
+    - intent: dessert
+    - action: dessert_form
+    - active_loop: dessert_form
+    - active_loop: null
+    - checkpoint: check_order_placed
+
+- story: finish order
+  steps:
+    - checkpoint: check_order_placed
+    - action: utter_final_order
+    - action: utter_goodbye
+####################################################
+
 - story: Story from Conversation ID 5cea152ee75f4e89abe8e507c2a45355
   steps:
   - intent: greet

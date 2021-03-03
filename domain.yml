@@ -31,15 +31,14 @@ intents:
     use_entities: true
 - order_inquiry:
     use_entities: true
-- nlu_fallback:
-    use_entities: false
-- thank you:
-    use_entities: false
-
+- thank_you:
+    use_entities: true
 - faq:
     use_entities: true
 - chitchat:
     use_entities: true
+- nlu_fallback:
+    use_entities: []
 
 entities:
 - main_entree
@@ -82,10 +81,12 @@ slots:
 responses:
   utter_greet:
   - text: Hey!
-  utter_thankyou:
-  - text: Thank you!
   utter_order_inquiry:
   - text: How can I help you?
+  utter_affirmation:
+  - text: got it!
+  utter_thankyou:
+  - text: Thank you!
   utter_price:
   - text: That will be XX Price. Fill in later once entity set...
   utter_cheer_up:
