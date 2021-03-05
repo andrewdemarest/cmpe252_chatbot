@@ -39,14 +39,12 @@ intents:
     use_entities: true
 - nlu_fallback:
     use_entities: []
-
 entities:
 - main_entree
 - drink
 - dessert
 - side
 - size
-
 slots:
   main_entree:
     type: rasa.shared.core.slots.TextSlot
@@ -106,8 +104,14 @@ responses:
       {main_entree}
       {size} {side}
       {drink}
+  utter_final_dessert_order:
+  - text: |-
+      For your order, I have:
+      {dessert}
   utter_side:
-  - text: Would you like anything to go with your {main_entree}?
+  - text: Would you like to add a side to go with your {main_entree}?
+  utter_anything_else:
+  - text: Would you like anything else?
   utter_size:
   - text: What size {side} would you like?
   utter_drink:
@@ -128,6 +132,8 @@ responses:
   - text: Mostly fries.
   utter_faq/ask_dessert:
   - text: We have Milk shakes, sundaes, kiddie cones, and McFlurries!
+  utter_suggest_window:
+  - text: You can pull up to the window for your order.
   utter_chitchat/ask_weather:
   - text: That weather is sure something.
   - text: I love days like this.
@@ -143,12 +149,10 @@ responses:
   - text: You are too kind.
   utter_rephrase:
   - text: I'm sorry, I didn't catch that. Can you rephrase?
-
 actions:
 - action_submit
 - validate_main_entree_form
 - validate_drink_form
-
 forms:
   main_entree_form:
     main_entree:

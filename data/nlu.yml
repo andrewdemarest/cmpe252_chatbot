@@ -117,6 +117,7 @@ nlu:
     - I'll have a [filet-o-fish](main_entree)
     - [one](main_entree) [deluxe crispy chicken sandwich](main_entree) please
     - I'll have a [4 piece chicken mcnuggets](main_entree) please
+    - can I have [a number one](main_entree)
 - intent: order_inquiry
   examples: |
     - What is my order?
@@ -144,6 +145,11 @@ nlu:
     - Can I get a [hot fudge sundae](dessert)
     - I'll have a [hot caramel sundae](dessert) please
     - I would like a [kiddie cone](dessert)
+    - can I have a [McFlurry](dessert)
+    - Can I have a [McFlurry](dessert)?
+    - can I have a [mcflurry](dessert)
+    - can I have a [vanilla shake](dessert)
+    - Can I have a [McFlurry](dessert)
 - intent: size
   examples: |
     - [large](size)

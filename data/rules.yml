@@ -2,7 +2,7 @@ version: "2.0"
 
 rules:
 
-- rule: Goodbye rule
+- rule: Goodbye
   steps:
   - intent: goodbye
   - action: utter_goodbye
@@ -32,6 +32,34 @@ rules:
   steps:
   - intent: chitchat
   - action: utter_chitchat
+
+# Take order rules - requires bot to be immediately responsive to any order type requested #####
+- rule: take main entree order
+  steps:
+  - intent: main_entree
+  - action: main_entree_form
+  - active_loop: main_entree_form
+  - active_loop: null
+
+- rule: take drink order
+  steps:
+    - intent: drink
+    - action: drink_form
+    - active_loop: drink_form
+    - active_loop: null
+
+- rule: take dessert order
+  steps:
+  - intent: dessert
+  - action: dessert_form
+  - active_loop: dessert_form
+  - active_loop: null
+
+- rule: take side order
+  steps:
+  - action: side_form
+  - active_loop: side_form
+  - active_loop: null
 
 # - rule: Activate Form
 #   steps:
