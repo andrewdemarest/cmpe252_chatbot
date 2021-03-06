@@ -46,27 +46,27 @@ entities:
 - side
 - size
 slots:
-  main_entree:
+  1_main_entree:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
     influence_conversation: true
-  size:
+  2_side:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
     influence_conversation: true
-  side:
+  3_size:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
     influence_conversation: true
-  drink:
+  4_drink:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
     influence_conversation: true
-  dessert:
+  5_dessert:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
@@ -101,26 +101,27 @@ responses:
   utter_final_order:
   - text: |-
       For your order, I have: 
-      {main_entree}
-      {size} {side}
-      {drink}
+      Entree: {1_main_entree}
+      Side: {3_size} {2_side}
+      Drink: {4_drink}
+      Dessert: {5_dessert}
   utter_final_dessert_order:
   - text: |-
       For your order, I have:
       {dessert}
-  utter_side:
-  - text: Would you like to add a side to go with your {main_entree}?
+  utter_ask_2_side:
+  - text: Would you like to add a side to go with your {1_main_entree}?
   utter_anything_else:
   - text: Would you like anything else?
-  utter_size:
-  - text: What size {side} would you like?
+  utter_ask_3_size:
+  - text: What size {2_side} would you like?
   utter_drink:
   - text: What would you like to wash that down with?
-  utter_ask_main_entree:
+  utter_ask_1_main_entree:
   - text: What is your main entree of choice?
-  utter_ask_drink:
+  utter_ask_4_drink:
   - text: What would you like to drink?
-  utter_ask_dessert:
+  utter_ask_5_dessert:
   - text: Could I interest you in a McFlurry or another dessert?
   utter_wrong_main_entree:
   - text: I'm sorry we don't have {incorrect_item}.
@@ -153,33 +154,30 @@ actions:
 - action_submit
 - validate_main_entree_form
 - validate_drink_form
+- dessert_form
+- main_entree_form
+- drink_form
+- side_form
 forms:
-  main_entree_form:
-    main_entree:
+  order_form:
+    1_main_entree:
     - entity: main_entree
       intent: main_entree
       type: from_entity
-  drink_form:
-    drink:
-    - entity: drink
-      intent: drink
-      type: from_entity
-  dessert_form:
-    dessert:
-    - entity: dessert
-      intent: dessert
-      type: from_entity
-  side_form:
-    side:
-    - entity: size
-      intent: side
-      type: from_entity
+    2_side:
     - entity: side
       intent: side
       type: from_entity
-  size_form:
-    size:
+    3_size:
     - entity: size
-      intent: side
+      intent: size
+      type: from_entity
+    4_drink:
+    - entity: drink
+      intent: drink
+      type: from_entity
+    5_dessert:
+    - entity: dessert
+      intent: dessert
       type: from_entity
 e2e_actions: []

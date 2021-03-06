@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -37,6 +36,7 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - A [coke](drink) sounds good
 - intent: deny
   examples: |
     - no
@@ -118,6 +118,10 @@ nlu:
     - [one](main_entree) [deluxe crispy chicken sandwich](main_entree) please
     - I'll have a [4 piece chicken mcnuggets](main_entree) please
     - can I have [a number one](main_entree)
+    - [mcchicken](main_entree)
+    - I'd like to order a [mcchicken](main_entree) please
+    - One [mcchicken](main_entree) please
+    - I'll have a [4 piece chicken mcnuggets](main_entree)
 - intent: order_inquiry
   examples: |
     - What is my order?
@@ -136,6 +140,7 @@ nlu:
     - [small](size) [fries](side)
     - [large](size) [fries](side)
     - [fries](side)
+    - I'll take an order of [fries](side) with that
 - intent: dessert
   examples: |
     - [McFlurry](dessert) please
@@ -150,6 +155,7 @@ nlu:
     - can I have a [mcflurry](dessert)
     - can I have a [vanilla shake](dessert)
     - Can I have a [McFlurry](dessert)
+    - A [mcflurry](dessert) sounds good
 - intent: size
   examples: |
     - [large](size)
@@ -158,6 +164,8 @@ nlu:
     - [large](size) please
     - I'll have a [small](size)
     - [medium](size)
+    - [Large](size) please
+    - Make it a [large](size)
 - intent: drink
   examples: |
     - a [coke](drink)
@@ -178,6 +186,8 @@ nlu:
     - I'll take an [orange juice](drink)
     - [dr pepper](drink) please
     - [lemonade](drink)
+    - [Coke](drink)
+    - Let me have a [coke](drink)
 - intent: faq/ask_main_entree
   examples: |
     - What main_entree's are there?

@@ -17,7 +17,7 @@ rules:
   - intent: thank_you
   - action: utter_thankyou
 
- # TODO: activate rule, I cant seem to activate this, even after raising threshold?
+# TODO: activate rule, I cant seem to activate this, even after raising threshold?
 - rule: Ask user to rephrase if the message has low NLU confidence
   steps:
   - intent: nlu_fallback
@@ -33,33 +33,59 @@ rules:
   - intent: chitchat
   - action: utter_chitchat
 
+- rule: Unhappy Order
+  condition:
+  - active_loop: order_form
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
+  - action: order_form
+  - active_loop: order_form
+
+- rule: Greet
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_order_inquiry
+  - active_loop: order_form
+
+- rule: Complete Order
+  condition:
+  - active_loop: order_form
+  steps:
+  - action: order_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_final_order
+
 # Take order rules - requires bot to be immediately responsive to any order type requested #####
-- rule: take main entree order
-  steps:
-  - intent: main_entree
-  - action: main_entree_form
-  - active_loop: main_entree_form
-  - active_loop: null
+# - rule: take main entree order
+# steps:
+#   - intent: main_entree
+#   - action: main_entree_form
+#   - active_loop: main_entree_form
+#   - active_loop: null
 
-- rule: take drink order
-  steps:
-    - intent: drink
-    - action: drink_form
-    - active_loop: drink_form
-    - active_loop: null
+# - rule: take drink order
+#   steps:
+#     - intent: drink
+#     - action: drink_form
+#     - active_loop: drink_form
+#     - active_loop: null
 
-- rule: take dessert order
-  steps:
-  - intent: dessert
-  - action: dessert_form
-  - active_loop: dessert_form
-  - active_loop: null
+# - rule: take dessert order
+#   steps:
+#   - intent: dessert
+#   - action: dessert_form
+#   - active_loop: dessert_form
+#   - active_loop: null
 
-- rule: take side order
-  steps:
-  - action: side_form
-  - active_loop: side_form
-  - active_loop: null
+# - rule: take side order
+#   steps:
+#   - action: side_form
+#   - active_loop: side_form
+#  active_loop: null
 
 # - rule: Activate Form
 #   steps:
