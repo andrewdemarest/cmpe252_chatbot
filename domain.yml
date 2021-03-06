@@ -123,7 +123,7 @@ responses:
   - text: What would you like to drink?
   utter_ask_5_dessert:
   - text: Could I interest you in a McFlurry or another dessert?
-  utter_wrong_main_entree:
+  utter_wrong_item:
   - text: I'm sorry we don't have {incorrect_item}.
   utter_faq/ask_main_entree:
   - text: We have things like burgers, chicken mcnuggets, spicy chicken sandwhiches, and things of that nature.
@@ -152,10 +152,11 @@ responses:
   - text: I'm sorry, I didn't catch that. Can you rephrase?
 actions:
 - action_submit
-- validate_main_entree_form
-- validate_drink_form
+  #- validate_main_entree_form
+  #- validate_drink_form
 - dessert_form
-- main_entree_form
+  #- validate_1_main_entree_form
+- validate_order_form
 - drink_form
 - side_form
 forms:

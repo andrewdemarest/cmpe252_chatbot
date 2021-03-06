@@ -141,6 +141,20 @@ nlu:
     - [large](size) [fries](side)
     - [fries](side)
     - I'll take an order of [fries](side) with that
+    - I'd like [cheesy fries](side) #<- add variation to responses so it picks up more than just fries)
+    - I'd like [nachos](side)
+    - I'd like a side of [biscuits](side)
+    - For a side I think I want [fries](side)
+    - On the side I'd like [green chile fries](side)
+    - To go with how about [potato wedges](side)
+    - To go with I'd like [fried green beans](side)
+    - For the side I'd like [french fried potatos](side)
+    - I'd like [onion rings](side) as a side
+    - [fries](side) please
+    - I'd like [mozarella sticks](side)
+    - [Nothing](side) as a side
+    - I need [nothing](side) as a side
+    - I'll have [nothing](side)
 - intent: dessert
   examples: |
     - [McFlurry](dessert) please
@@ -156,6 +170,9 @@ nlu:
     - can I have a [vanilla shake](dessert)
     - Can I have a [McFlurry](dessert)
     - A [mcflurry](dessert) sounds good
+    - [Nothing](dessert)
+    - I don't need [nothing](dessert)
+
 - intent: size
   examples: |
     - [large](size)
@@ -166,6 +183,12 @@ nlu:
     - [medium](size)
     - [Large](size) please
     - Make it a [large](size)
+    - Make it an [extra large](size)
+    - I'll have an [XL](size)
+    - I'll have a [kiddie](size) size
+    - [extra large](size) please
+    - I'll just have a [small](small)
+
 - intent: drink
   examples: |
     - a [coke](drink)
@@ -188,6 +211,11 @@ nlu:
     - [lemonade](drink)
     - [Coke](drink)
     - Let me have a [coke](drink)
+    - Let me get a [red bull](drink)
+    - I'd like a [red bull](drink) to drink
+    - Can I get a [water](drink) to drink
+    - [Nothing](drink) to drink
+    - [orange juice](drink) to drink
 - intent: faq/ask_main_entree
   examples: |
     - What main_entree's are there?
