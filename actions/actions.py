@@ -33,64 +33,118 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 
-class ValidateSlots(Action):
+class ValidateOrderForm(FormValidationAction):
+
+    validation_events = []
+
     def name(self) -> Text:
-        print("Custom action called...")
-        return "action_validate_order_form"
+        return "validate_order_form"
 
-    def run(self, 
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: DomainDict
-            ) -> List[EventType]:
-        print("Running")
-        extracted_slots: Dict[Text, Any] = tracker.slots_to_validate()
-        print(extracted_slots)
-        validation_events = []
-        for slot_name, slot_value in extracted_slots.items():
-            #Checks if slot is valid:
-            if self.is_valid(slot_name, slot_value):
-                validation_events.append(SlotSet(slot_name, slot_value))
-            else:
-                print('we dont have')
-                dispatcher.utter_message(template="utter_wrong_item", incorrect_item = slot_value)
-                validation_events.append(SlotSet(slot_name, None))
+    def invalid_item(
+        self,
+        slot_name: Any,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher):
 
-        return validation_events
+        print('we dont have')
+        dispatcher.utter_message(template="utter_wrong_item", incorrect_item=slot_value)
+        self.validation_events.append(SlotSet(slot_name, None))
 
+    def validate_1_main_entree(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
 
-    def is_valid(self, slot_name, slot_value: Any) -> bool:
         print("Running is valid")
-        print(slot_name)
+        print("1_main_entree")
         print(slot_value)
-        if slot_name.lower() == '1_main_entree':
-            if slot_value.lower() in self.main_entree_db():
-                return True
-            else:
-                return False
-        elif slot_name.lower() == '2_side':
-            if slot_value.lower() in self.side_db():
-                return True
-            else:
-                return False
-        elif slot_name.lower() == '3_size':
-            if slot_value.lower() in self.size_db():
-                return True
-            else:
-                return False
-        elif slot_name.lower() == '4_drink':
-            if slot_value.lower() in self.drink_db():
-                return True
-            else:
-                return False
-        elif slot_name.lower() == '5_dessert':
-            if slot_value.lower() in self.dessert_db():
-                return True
-            else:
-                return False
-        else:        
-            return False
 
+        if slot_value.lower() in self.main_entree_db():
+            self.validation_events.append(SlotSet("1_main_entree", slot_value))
+            return {"1_main_entree": slot_value}
+        else:
+            self.invalid_item("1_main_entree", slot_value, dispatcher)
+            return {"1_main_entree": None}
+
+
+    def validate_2_side(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        print("Running is valid")
+        print("2_side")
+        print(slot_value)
+
+        if slot_value.lower() in self.side_db():
+            self.validation_events.append(SlotSet("2_side", slot_value))
+            return {"2_side": slot_value}
+        else:
+            self.invalid_item("2_side", slot_value, dispatcher)
+            return {"2_side": None}
+
+    def validate_3_size(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        print("Running is valid")
+        print("3_size")
+        print(slot_value)
+
+        if slot_value.lower() in self.size_db():
+            self.validation_events.append(SlotSet("3_size", slot_value))
+            return {"3_size": slot_value}
+        else:
+            self.invalid_item("3_size", slot_value, dispatcher)
+            return {"3_size": None}
+
+    def validate_4_drink(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        print("Running is valid")
+        print("4_drink")
+        print(slot_value)
+
+        if slot_value.lower() in self.drink_db():
+            self.validation_events.append(SlotSet("4_drink", slot_value))
+            return {"4_drink": slot_value}
+        else:
+            self.invalid_item("4_drink", slot_value, dispatcher)
+            return {"4_drink": None}
+
+    def validate_5_dessert(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        print("Running is valid")
+        print("5_dessert")
+        print(slot_value)
+
+        if slot_value.lower() in self.dessert_db():
+            self.validation_events.append(SlotSet("5_dessert", slot_value))
+            return {"5_dessert": slot_value}
+        else:
+            self.invalid_item("5_dessert", slot_value, dispatcher)
+            return {"5_dessert": None}
 
     @staticmethod
     def main_entree_db() -> List[Text]:
@@ -99,13 +153,13 @@ class ValidateSlots(Action):
             "a number one",
             "burger",
             "cheeseburger",
-            "Chicken Nuggets", 
+            "chicken nuggets", 
             "crispy chicken sandwich",
             "spicy crispy chicken sandwich",
             "deluxe crispy chicken sandwich",
             "6 piece chicken mcnuggets", 
             "4 piece chicken mcnuggets",
-            "McChicken",
+            "mcchicken",
             "filet-o-fish",
             "nothing",
             ]
@@ -151,10 +205,6 @@ class ValidateSlots(Action):
             "nothing",
             ]
 
-class ValidateOrderForm(FormValidationAction):
-    def name(self) -> Text:
-        return "validate_order_form"
-
     def extract_2_side(
         self,
         dispatcher: CollectingDispatcher,
@@ -179,7 +229,10 @@ class ValidateOrderForm(FormValidationAction):
 
         elif tracker.get_intent_of_latest_message() == "side":
             size_ordered = next(tracker.get_latest_entity_values("size"), None)
-            return {"2_side":tracker.latest_message.get("text"), "3_size":size_ordered}
+            if size_ordered != None:
+                return {"2_side":tracker.latest_message.get("text"), "3_size":size_ordered}
+            else:
+                return {"2_side": tracker.latest_message.get("text")}
 
     def extract_5_dessert(
         self,
@@ -222,7 +275,7 @@ class FinalOrder(Action):
         message = ""
         if main_entree != "nothing": message = message + "\n" + main_entree
         if size != "nothing": message = message + "\n" + size
-        if side != "nothing": message = message + "\n" + side
+        if side != "nothing": message = message + " " + side
         if drink != "nothing": message = message + "\n" + drink
         if dessert != "nothing": message = message + "\n" + dessert
 

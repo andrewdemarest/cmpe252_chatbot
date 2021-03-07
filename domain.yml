@@ -152,7 +152,6 @@ responses:
   utter_rephrase:
   - text: I'm sorry, I didn't catch that. Can you rephrase?
 actions:
-- action_validate_order_form
 - validate_order_form
 - action_final_order
 forms:
