@@ -45,6 +45,7 @@ entities:
 - dessert
 - side
 - size
+- small
 slots:
   1_main_entree:
     type: rasa.shared.core.slots.TextSlot
@@ -151,14 +152,9 @@ responses:
   utter_rephrase:
   - text: I'm sorry, I didn't catch that. Can you rephrase?
 actions:
-- action_submit
-  #- validate_main_entree_form
-  #- validate_drink_form
-- dessert_form
-  #- validate_1_main_entree_form
+- action_validate_order_form
 - validate_order_form
-- drink_form
-- side_form
+- action_final_order
 forms:
   order_form:
     1_main_entree:

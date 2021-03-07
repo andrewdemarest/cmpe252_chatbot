@@ -36,7 +36,7 @@ from rasa_sdk.events import SlotSet, EventType
 class ValidateSlots(Action):
     def name(self) -> Text:
         print("Custom action called...")
-        return "validate_order_form"
+        return "action_validate_order_form"
 
     def run(self, 
             dispatcher: CollectingDispatcher,
@@ -151,7 +151,85 @@ class ValidateSlots(Action):
             "nothing",
             ]
 
- 
+class ValidateOrderForm(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_order_form"
+
+    def extract_2_side(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict
+    ) -> Dict[Text, Any]:
+
+        missing_slots = (
+            slot_name
+            for slot_name in self.slots_mapped_in_domain(domain)
+            if tracker.slots.get(slot_name) is None
+        )
+
+        if next(missing_slots, None) == "2_side":
+
+            if tracker.get_intent_of_latest_message() == "deny":
+                return {"2_side":"nothing", "3_size":"nothing"}
+
+            elif tracker.get_intent_of_latest_message() == "affirm":
+                dispatcher.utter_message(text="What side would you like?")
+                return {"2_side": None}
+
+        elif tracker.get_intent_of_latest_message() == "side":
+            size_ordered = next(tracker.get_latest_entity_values("size"), None)
+            return {"2_side":tracker.latest_message.get("text"), "3_size":size_ordered}
+
+    def extract_5_dessert(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict
+    ) -> Dict[Text, Any]:
+
+        missing_slots = (
+            slot_name
+            for slot_name in self.slots_mapped_in_domain(domain)
+            if tracker.slots.get(slot_name) is None
+        )
+
+        if next(missing_slots, None) == "5_dessert":
+
+            if tracker.get_intent_of_latest_message() == "deny":
+                return {"5_dessert":"nothing"}
+
+            elif tracker.get_intent_of_latest_message() == "affirm":
+                dispatcher.utter_message(text="What dessert would you like?")
+                return {"5_dessert": None}
+                
+        elif tracker.get_intent_of_latest_message() == "dessert":
+            return {"5_dessert":tracker.latest_message.get("text")}
+
+
+class FinalOrder(Action):
+    def name(self) -> Text:
+        return "action_final_order"
+
+    async def run(self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        main_entree = tracker.get_slot("1_main_entree")
+        side = tracker.get_slot("2_side")
+        size = tracker.get_slot("3_size")
+        drink = tracker.get_slot("4_drink")
+        dessert = tracker.get_slot("5_dessert")
+
+        message = ""
+        if main_entree != "nothing": message = message + "\n" + main_entree
+        if size != "nothing": message = message + "\n" + size
+        if side != "nothing": message = message + "\n" + side
+        if drink != "nothing": message = message + "\n" + drink
+        if dessert != "nothing": message = message + "\n" + dessert
+
+        if message == "":
+            dispatcher.utter_message(text="You didn't order anything. :(")
+        else:
+            dispatcher.utter_message(text="For your order, I have:" + message)
  
  
  

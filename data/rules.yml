@@ -1,38 +1,29 @@
 version: "2.0"
-
 rules:
-
 - rule: Goodbye
   steps:
   - intent: goodbye
   - action: utter_goodbye
-
 - rule: Bot challenge
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
-
 - rule: Thank you
   steps:
   - intent: thank_you
   - action: utter_thankyou
-
-# TODO: activate rule, I cant seem to activate this, even after raising threshold?
 - rule: Ask user to rephrase if the message has low NLU confidence
   steps:
   - intent: nlu_fallback
   - action: utter_rephrase
-
 - rule: respond to FAQs
   steps:
   - intent: faq
   - action: utter_faq
-
 - rule: respond to chitchat
   steps:
   - intent: chitchat
   - action: utter_chitchat
-
 - rule: Unhappy Order
   condition:
   - active_loop: order_form
@@ -41,14 +32,12 @@ rules:
   - action: utter_chitchat
   - action: order_form
   - active_loop: order_form
-
 - rule: Greet
   steps:
   - intent: greet
   - action: utter_greet
   - action: utter_order_inquiry
   - active_loop: order_form
-
 - rule: Complete Order
   condition:
   - active_loop: order_form
@@ -57,50 +46,4 @@ rules:
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
-  - action: utter_final_order
-
-# Take order rules - requires bot to be immediately responsive to any order type requested #####
-# - rule: take main entree order
-# steps:
-#   - intent: main_entree
-#   - action: main_entree_form
-#   - active_loop: main_entree_form
-#   - active_loop: null
-
-# - rule: take drink order
-#   steps:
-#     - intent: drink
-#     - action: drink_form
-#     - active_loop: drink_form
-#     - active_loop: null
-
-# - rule: take dessert order
-#   steps:
-#   - intent: dessert
-#   - action: dessert_form
-#   - active_loop: dessert_form
-#   - active_loop: null
-
-# - rule: take side order
-#   steps:
-#   - action: side_form
-#   - active_loop: side_form
-#  active_loop: null
-
-# - rule: Activate Form
-#   steps:
-#   - intent: order
-#   - action: order_form #Matches domain.yml AND actions.py
-#   - active_loop: order_form #indicate the form is active
-
-# - rule: Submit form #Deactivate the form
-#   condition:
-#   - active_loop: order_form #enters rule submit form if condition is met that order_form is active
-#   steps:
-#   - action: order_form
-#   - active_loop: null
-#   - slot_was_set:
-#     - requested_slot: null
-#   - action: action_submit #action to perform when we submit the form (or deactivate it)
-
-
+  - action: action_final_order
