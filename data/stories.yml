@@ -4,7 +4,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_order_inquiry
+  - action: utter_order_affirmation
   - action: order_form
   - active_loop: order_form
   - slot_was_set:
@@ -54,7 +54,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_order_inquiry
+  - action: utter_order_affirmation
   - action: order_form
   - active_loop: order_form
   - slot_was_set:

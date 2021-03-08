@@ -80,8 +80,8 @@ slots:
 responses:
   utter_greet:
   - text: Hey!
-  utter_order_inquiry:
-  - text: How can I help you?
+  utter_order_affirmation:
+  - text: I am here to take your order.
   utter_affirmation:
   - text: got it!
   utter_thankyou:

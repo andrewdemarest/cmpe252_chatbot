@@ -36,7 +36,7 @@ rules:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_order_inquiry
+  - action: utter_order_affirmation
   - active_loop: order_form
 - rule: Complete Order
   condition:
