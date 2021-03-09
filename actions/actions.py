@@ -60,7 +60,12 @@ class ValidateOrderForm(FormValidationAction):
 
         print("Running is valid")
         print("1_main_entree")
+        if not isinstance(slot_value, str):
+            seperator = " "
+            slot_value = seperator.join(slot_value)
+
         print(slot_value)
+
 
         if slot_value.lower() in self.main_entree_db():
             self.validation_events.append(SlotSet("1_main_entree", slot_value))
@@ -80,6 +85,11 @@ class ValidateOrderForm(FormValidationAction):
 
         print("Running is valid")
         print("2_side")
+
+        if not isinstance(slot_value, str):
+            seperator = " "
+            slot_value = seperator.join(slot_value)
+
         print(slot_value)
 
         if slot_value.lower() in self.side_db():
@@ -96,6 +106,11 @@ class ValidateOrderForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
+
+
+        if not isinstance(slot_value, str):
+            seperator = " "
+            slot_value = seperator.join(slot_value)
 
         print("Running is valid")
         print("3_size")
@@ -118,6 +133,11 @@ class ValidateOrderForm(FormValidationAction):
 
         print("Running is valid")
         print("4_drink")
+
+        if not isinstance(slot_value, str):
+            seperator = " "
+            slot_value = seperator.join(slot_value)
+
         print(slot_value)
 
         if slot_value.lower() in self.drink_db():
@@ -137,6 +157,11 @@ class ValidateOrderForm(FormValidationAction):
 
         print("Running is valid")
         print("5_dessert")
+
+        if not isinstance(slot_value, str):
+            seperator = " "
+            slot_value = seperator.join(slot_value)
+
         print(slot_value)
 
         if slot_value.lower() in self.dessert_db():
@@ -153,6 +178,7 @@ class ValidateOrderForm(FormValidationAction):
             "a number one",
             "burger",
             "cheeseburger",
+            "cheese burger",
             "chicken nuggets", 
             "crispy chicken sandwich",
             "spicy crispy chicken sandwich",

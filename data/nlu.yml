@@ -122,6 +122,12 @@ nlu:
     - I'd like to order a [mcchicken](main_entree) please
     - One [mcchicken](main_entree) please
     - I'll have a [4 piece chicken mcnuggets](main_entree)
+    - I'd like a [bacon burger](main_entree)
+    - I'd like a [cheese burger](main_entree)
+    - I'd like a [guac burger](main_entree)
+    - Can I get a [bacon burger](main_entree)
+    - Can I get a [bleu cheese burger](main_entree)
+    - Can I get the [American hamburger](main_entree)
 - intent: order_inquiry
   examples: |
     - What is my order?
@@ -265,3 +271,42 @@ nlu:
     - You are wonderful.
     - You are a handsome devil.
     - You have a way with words.
+- intent: faq/ask_hours
+  examples: |
+    - What are your hours of operation?
+    - How late are you open?
+    - What's the latest you are open?
+    - How early do you open?
+    - What are the hours you're open?
+    - What time are you open?
+- intent: faq/ask_holidays
+  examples: |
+    - What holidays are you closed on?
+    - Are you open on Christams?
+    - Are you open on holidays?
+    - Do you serve food on holidays?
+- intent: faq/ask_holiday_time
+  examples: |
+    - What are your holiday hours?
+    - What hours are you open on holidays?
+    - What time are you open on holidays?
+    - What time do you open on holidays?
+- intent: faq/gluten_free_menu
+  examples: |
+    - Do you have a gluten free menu?
+    - Are you gluten free?
+    - Do you carry a gluten free menu?
+- intent: faq/breakfast_hours
+  examples: |
+    - Do you have a breakfast menu?
+    - When do you stop serving breakfast?
+    - When is breakfast over?
+    - At what time do you stop serving breakfast?
+- intent: chitchat/manager
+  examples: |
+    - I'd like to speak to your manager!
+    - Can you let me speak to your manager?
+    - Where is your manager?
+    - Bring out the manager?
+    - I am angry. I want to talk to your manager.
+

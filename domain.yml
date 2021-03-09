@@ -39,6 +39,8 @@ intents:
     use_entities: true
 - nlu_fallback:
     use_entities: []
+- ask_hours:
+    use_entities: false
 entities:
 - main_entree
 - drink
@@ -86,8 +88,6 @@ responses:
   - text: got it!
   utter_thankyou:
   - text: Thank you!
-  utter_price:
-  - text: That will be XX Price. Fill in later once entity set...
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: 'Here is something to cheer you up:'
@@ -111,7 +111,7 @@ responses:
       For your order, I have:
       {dessert}
   utter_ask_2_side:
-  - text: Would you like to add a side to go with your {1_main_entree}?
+  - text: What side would you like with your {1_main_entree}?
   utter_anything_else:
   - text: Would you like anything else?
   utter_ask_3_size:
@@ -123,7 +123,7 @@ responses:
   utter_ask_4_drink:
   - text: What would you like to drink?
   utter_ask_5_dessert:
-  - text: Could I interest you in a McFlurry or another dessert?
+  - text: What can I get you for dessert? We have McFlurries among other delicious treats.
   utter_wrong_item:
   - text: I'm sorry we don't have {incorrect_item}.
   utter_faq/ask_main_entree:
@@ -149,8 +149,26 @@ responses:
   utter_chitchat/compliment:
   - text: Aw thanks!
   - text: You are too kind.
+  utter_chitchat/manager:
+  - text: uh oh...
+  - text: I am the manager!
+  - text: okay fine
   utter_rephrase:
   - text: I'm sorry, I didn't catch that. Can you rephrase?
+  utter_faq/ask_hours:
+  - text: We're open from 5am until 10pm.
+  - text: We stay open from 5am to 10pm. 
+  - text: We open early and stay open late!
+  utter_faq/ask_holidays:
+  - text: We are open on all Holidays.
+  - text: Robots do not celebrate holidays, so we are here all the time!
+  utter_faq/ask_holiday_time:
+  - text: We have reduced Holiday hours from 9am until 9pm. 
+  utter_faq/breakfast_hours:
+  - text: Unfortunately we don't serve breakfast.
+  - text: We don't have breakfast. We serve burgers from 5am until 10pm.
+  utter_faq/gluten_free_menu:
+  - text: No we don't really have a gluten free menu.
 actions:
 - validate_order_form
 - action_final_order
