@@ -240,7 +240,7 @@ nlu:
     - What desserts do you have?
     - What desserts are there?
     - Well what desserts do you serve?
-    - What types of sides do you have?
+    - What types of desserts do you have?
 - intent: chitchat/ask_weather
   examples: |
     - Sure is a nice day out.
