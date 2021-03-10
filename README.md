@@ -32,3 +32,18 @@ McDonalds Drive through Chat Bot
 
 ### Talk to McBot
 1) rasa shell
+
+## Sample conversation 1:
+> User: Hi
+> McBot Response: Greets and asks for main entree
+> User: I'd like a burger
+> McBot Response: Asks for side order
+> User: I'd like french fries
+> McBot Repsonse: Asks for size of side
+> User: I'd like a small
+> McBot Response: Asks for drink order
+> User: I'd like a sprite
+> McBot Response: Asks for dessert
+> User: I'd like a McFlurry
+> McBot Response: Repeats order back to user
+> 
