@@ -46,4 +46,15 @@ McDonalds Drive through Chat Bot
 - McBot Response: Asks for dessert
 - User: I'd like a McFlurry
 - McBot Response: Repeats order back to user
+## Sample conversation 2:
+- User: What time are you open?
+- McBot Response: Responds with store hours.
+- User: Are you open on holidays?
+- McBot Response: Responds with holiday schedule.
+- User: What are your holiday hours?
+- McBot Response: Responds with the holiday hours.
+## Other notes:
+- McBot responds to query about the menu on a per item basis. e.g. what main entrees do you have?.
+- McBot responds to basic chitchat. Especially comments, or if the manager needs to be seen.
+- McBot does check if what you're ordering is actually on the menu. For instance McBot does not serve a bacon burger.
 
