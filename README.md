@@ -80,6 +80,6 @@ https://rasa.com/docs/rasa/installation/
 - McBot: You are too kind.
 ## Other notes:
 - McBot responds to query about the menu on a per item basis. e.g. what main entrees do you have?.
-- McBot responds to basic chitchat. Especially comments, or if the manager needs to be seen.
+- McBot responds to basic chitchat. Especially compliments, or if the manager needs to be seen.
 - McBot does check if what you're ordering is actually on the menu. For instance McBot does not serve a bacon burger.
 
