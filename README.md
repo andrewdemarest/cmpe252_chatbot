@@ -4,6 +4,10 @@ McDonalds Drive through Chat Bot
 # Chatbot Platform: RASA
 
 ## How to install:
+* RASA's official installation documentation:
+https://rasa.com/docs/rasa/installation/
+
+* abridged walk through below
 
 ### Pre-requisite: 
 1) Download Anaconda
@@ -32,6 +36,9 @@ McDonalds Drive through Chat Bot
 
 ### Talk to McBot
 1) rasa shell
+
+### Download RASA X 
+1) pip install rasa-x --extra-index-url https://pypi.rasa.com/simple
 
 ## Sample conversation 1:
 - User: Hi
