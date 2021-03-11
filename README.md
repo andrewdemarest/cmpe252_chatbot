@@ -53,6 +53,17 @@ McDonalds Drive through Chat Bot
 - McBot Response: Responds with holiday schedule.
 - User: What are your holiday hours?
 - McBot Response: Responds with the holiday hours.
+## Sample conversation 3 (for the talkative customer):
+- User: Hi how are you?
+- McBot: Livin' the dream!
+- User: What's new with you?
+- McBot: Surviving
+- User: What's your name
+- McBot: My name is McBot
+- User: Cool how's the weather?
+- McBot: The weather is sure something.
+- User: You are awesome!
+- McBot: You are too kind.
 ## Other notes:
 - McBot responds to query about the menu on a per item basis. e.g. what main entrees do you have?.
 - McBot responds to basic chitchat. Especially comments, or if the manager needs to be seen.
