@@ -31,14 +31,21 @@ https://rasa.com/docs/rasa/installation/
 ### Download RASA
 1) pip install rasa
 
+### Download RASA X 
+* optional chatbot GUI
+1) pip install rasa-x --extra-index-url https://pypi.rasa.com/simple
+
 ### Train rasa
 1) rasa train
 
-### Talk to McBot
-1) rasa shell
+### Start up Action Server
+1) Open separate terminal
+2) rasa run actions
 
-### Download RASA X 
-1) pip install rasa-x --extra-index-url https://pypi.rasa.com/simple
+### Talk to McBot
+* 2 options:
+1) rasa shell
+2) rasa x
 
 ## Sample conversation 1:
 - User: Hi
